@@ -26,3 +26,8 @@ cookbook_file "#{d}/.ssh/authorized_keys" do
   group u
   mode 0640
 end
+
+# include rdiff-backup stuff in backup
+backup_path d
+# include chef config in backup
+backup_path "/etc/chef"
