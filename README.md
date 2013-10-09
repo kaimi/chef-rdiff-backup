@@ -69,4 +69,4 @@ Contributing
 
 License and Authors
 -------------------
-Authors: ka’imi <kaimi@piratenfraktion-nwr.de>
+Authors: ka’imi <kaimi@piratenfraktion-nrw.de>
