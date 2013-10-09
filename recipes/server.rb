@@ -42,7 +42,7 @@ end
 
 cron "backup" do
   hour "23"
-  mailto "it@piratenfraktion-nrw.de"
+  mailto node['rdiff-backup']['notification_email']
   user "rdiff-backup"
   command "ps a | grep backup.sh | grep -v grep || /etc/rdiff-backup/backup.sh 2>&1"
 end
