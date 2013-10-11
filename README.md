@@ -74,6 +74,19 @@ Attributes
   </tr>
 </table>
 
+Definitions
+-----------
+
+### backup\_path
+
+Adds a path to the backup directory list.
+
+#### Example
+
+`backup_path "/var/lib/mailman"`
+
+Adds the mailman home directory to be backed up.
+
 Usage
 -----
 ### rdiff-backup::default
