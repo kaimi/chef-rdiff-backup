@@ -81,20 +81,29 @@ Definitions
 
 Adds a path to the backup directory list.
 
-#### Example
 
+Usage
+-----
+
+### recipes
+#### rdiff-backup::default
+Used in the other recipes. Do not call directly.
+#### rdiff-backup::client
+Sets up the client (= host to be backed up) side.
+#### rdiff-backup::server
+Sets up the server (= host to save backups to) side.
+
+###definitions
+#### backup\_path
 `backup_path "/var/lib/mailman"`
 
 Adds the mailman home directory to be backed up.
 
-Usage
------
-### rdiff-backup::default
-Used in the other recipes. Do not call directly.
-### rdiff-backup::client
-Sets up the client (= host to be backed up) side.
-### rdiff-backup::server
-Sets up the server (= host to save backups to) side.
+### pre and post backup scripts
+
+You can put shell scripts into `#{node['rdiff-backup']['etc_dir']}/pre.d` and 
+`#{node['rdiff-backup']['etc_dir']}/post.d` folders to be run before and after 
+the backup itself respectively.
 
 Contributing
 ------------
