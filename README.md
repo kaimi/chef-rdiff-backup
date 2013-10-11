@@ -6,21 +6,23 @@ This cookbook configures backup using the [rdiff-backup backup tool](http://rdif
 Requirements
 ------------
 
-Pretty much none.
+### ssh key
+
+Put a ssh private key into `files/default/#{node['rdiff-backup']['key']` and the 
+corresponding public one into `files/default/#{node['rdiff-backup']['key'].pub`.
+
+This key will be used for the `rdiff-backup` user that runs the backups.
+
+### Cookbooks:
+
+* ssh\_known\_hosts
+* sudo
 
 Attributes
 ----------
-TODO: List you cookbook attributes here.
 
-e.g.
-#### rdiff-backup::default
-default['rdiff-backup']['client_role'] = "backupped"
-default['rdiff-backup']['server_role'] = "backup"
+### rdiff-backup::default
 
-default['rdiff-backup']['backup_dir'] = "/backup"
-default['rdiff-backup']['etc_dir'] = "/etc/rdiff-backup"
-default['rdiff-backup']['var_dir'] = "/var/rdiff-backup"
-default['rdiff-backup']['user'] = "rdiff-backup"
 <table>
   <tr>
     <th>Key</th>
@@ -29,33 +31,57 @@ default['rdiff-backup']['user'] = "rdiff-backup"
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['rdiff-backup']['bacon']</tt></td>
+    <td><tt>['rdiff-backup']['backup_dir']</tt></td>
+    <td>String</td>
+    <td>where to put the backup files</td>
+    <td><tt>/backup</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['rdiff-backup']['etc_dir']</tt></td>
+    <td>String</td>
+    <td>where to put the rdiff-backup config files</td>
+    <td><tt>/etc/rdiff-backup</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['rdiff-backup']['user']</tt></td>
     <td>Boolean</td>
-    <td>whether to include bacon</td>
+    <td>the user to run the backup task as</td>
+    <td><tt>rdiff-backup</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['rdiff-backup']['key']</tt></td>
+    <td>String</td>
+    <td>the ssh key file name</td>
+    <td><tt>id_rsa</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['rdiff-backup']['notification_email']</tt></td>
+    <td>String</td>
+    <td>where to send summary emails</td>
+    <td><tt>nil</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['rdiff-backup']['autotrim_enable']</tt></td>
+    <td>Boolean</td>
+    <td>whether to auto trim backups</td>
     <td><tt>true</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['rdiff-backup']['autotrim_timespan']</tt></td>
+    <td>String</td>
+    <td>backup retention timespan (in rdiff-backup format)</td>
+    <td><tt>1y</tt></td>
   </tr>
 </table>
 
 Usage
 -----
-#### rdiff-backup::default
-TODO: Write usage instructions for each cookbook.
-#### rdiff-backup::client
-TODO: Write usage instructions for each cookbook.
-#### rdiff-backup::server
-TODO: Write usage instructions for each cookbook.
-
-e.g.
-Just include `rdiff-backup` in your node's `run_list`:
-
-```json
-{
-  "name":"my_node",
-  "run_list": [
-    "recipe[rdiff-backup]"
-  ]
-}
-```
+### rdiff-backup::default
+Used in the other recipes. Do not call directly.
+### rdiff-backup::client
+Sets up the client (= host to be backed up) side.
+### rdiff-backup::server
+Sets up the server (= host to save backups to) side.
 
 Contributing
 ------------
