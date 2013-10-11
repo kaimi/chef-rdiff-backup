@@ -50,7 +50,9 @@ end
 
 cron "backup" do
   hour "23"
-  mailto node['rdiff-backup']['notification_email']
+  if node['rdiff-backup']['notification_email'] then
+    mailto node['rdiff-backup']['notification_email']
+  end
   user "rdiff-backup"
   command "ps a | grep backup.sh | grep -v grep || /etc/rdiff-backup/backup.sh 2>&1"
 end
