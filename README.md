@@ -61,6 +61,12 @@ Attributes
     <td><tt>nil</tt></td>
   </tr>
   <tr>
+    <td><tt>['rdiff-backup']['lockfile']</tt></td>
+    <td>String</td>
+    <td>where to write the cron job lockfile</td>
+    <td><tt>/tmp/rdiff-backup.lock</tt></td>
+  </tr>
+  <tr>
     <td><tt>['rdiff-backup']['autotrim_enable']</tt></td>
     <td>Boolean</td>
     <td>whether to auto trim backups</td>

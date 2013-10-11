@@ -55,5 +55,5 @@ cron "backup" do
     mailto node['rdiff-backup']['notification_email']
   end
   user "rdiff-backup"
-  command "ps a | grep backup.sh | grep -v grep || /etc/rdiff-backup/backup.sh 2>&1"
+  command ": Backup Summary; /etc/rdiff-backup/backup.sh 2>&1"
 end

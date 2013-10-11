@@ -10,6 +10,7 @@ default['rdiff-backup']['etc_dir'] = "/etc/rdiff-backup"
 default['rdiff-backup']['user'] = "rdiff-backup"
 default['rdiff-backup']['key'] = "id_rsa"
 default['rdiff-backup']['notification_email'] = "it@piratenfraktion-nrw.de"
+default['rdiff-backup']['lockfile'] = "/tmp/rdiff-backup.lock"
 
 default['rdiff-backup']['autotrim_enable'] = false
 default['rdiff-backup']['autotrim_timespan'] = "1y"
