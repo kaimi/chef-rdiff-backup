@@ -10,9 +10,9 @@ if c['dirs'] != nil then %>
 echo "
 starting backup of <%= c['fqdn'] %>
 "
-ssh <%= c['fqdn'] %> 'find /etc/rdiff-backup/pre.d -type f -exec {} \;'
-rdiff-backup --print-statistics <% c['dirs'].each do |d| %> --include <%= d %> <% end %> --exclude / <%= c['fqdn'] %>::/ /backup/<%= c['fqdn'] %>
-ssh <%= c['fqdn'] %> 'find /etc/rdiff-backup/post.d -type f -exec {} \;'
+ssh <%= c['fqdn'] %> 'find <%= node['rdiff-backup']['etc_dir'] %>/pre.d -type f -exec {} \;'
+rdiff-backup --print-statistics --remote-schema 'ssh -C %s "sudo /usr/bin/rdiff-backup --server --restrict-read-only /"' <% c['dirs'].each do |d,w| %> --include <%= d %> <% end %> --exclude / <%= c['fqdn'] %>::/ <%= node['rdiff-backup']['backup_dir'] %>/<%= c['fqdn'] %>
+ssh <%= c['fqdn'] %> 'find <%= node['rdiff-backup']['etc_dir'] %>/post.d -type f -exec {} \;'
 <% if node['rdiff-backup']['autotrim_enable'] then %>
 rdiff-backup --force --remove-older-than <%= node['rdiff-backup']['autotrim_timespan'] %> <%= node['rdiff-backup']['backup_dir'] %>/<%= c['fqdn'] %>
 <% end
