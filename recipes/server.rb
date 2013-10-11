@@ -5,7 +5,7 @@
 # Copyright 2013, Piratenfraktion NRW
 #
 
-include_recipe "rdiff-backup"
+include_recipe "rdiff-backup::client"
 include_recipe "ssh_known_hosts"
 
 d = node['rdiff-backup']['etc_dir']
