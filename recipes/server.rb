@@ -30,6 +30,14 @@ clients = partial_search(:node, "rdiff-backup:[* TO *]",
 			'dirs' => [ 'rdiff-backup', 'include' ]
 })
 
+clients.sort_by! do |c|
+  c['fqdn']
+end
+
+clients.each do |c|
+  ssh_known_hosts_entry c['fqdn']
+end
+
 template "#{d}/backup.sh" do
   source "backup.sh.erb"
   user u
