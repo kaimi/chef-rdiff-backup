@@ -50,6 +50,7 @@ end
 
 cron "backup" do
   hour "23"
+  minute "0"
   if node['rdiff-backup']['notification_email'] then
     mailto node['rdiff-backup']['notification_email']
   end
