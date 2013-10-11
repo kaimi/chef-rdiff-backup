@@ -8,8 +8,8 @@ Requirements
 
 ### ssh key
 
-Put a ssh private key into `files/default/#{node['rdiff-backup']['key']` and the 
-corresponding public one into `files/default/#{node['rdiff-backup']['key'].pub`.
+Put a ssh private key into `files/default/#{node['rdiff-backup']['key']}` and the 
+corresponding public one into `files/default/#{node['rdiff-backup']['key']}.pub`.
 
 This key will be used for the `rdiff-backup` user that runs the backups.
 
