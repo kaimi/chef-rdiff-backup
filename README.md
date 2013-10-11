@@ -55,13 +55,19 @@ Attributes
     <td><tt>id_rsa</tt></td>
   </tr>
   <tr>
-    <td><tt>['rdiff-backup']['notification_email']</tt></td>
+    <td><tt>['rdiff-backup']['cron_enable']</tt></td>
+    <td>Boolean</td>
+    <td>whether to setup a cron job for automated backups</td>
+    <td><tt>true</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['rdiff-backup']['cron_email']</tt></td>
     <td>String</td>
     <td>where to send summary emails</td>
     <td><tt>nil</tt></td>
   </tr>
   <tr>
-    <td><tt>['rdiff-backup']['lockfile']</tt></td>
+    <td><tt>['rdiff-backup']['cron_lockfile']</tt></td>
     <td>String</td>
     <td>where to write the cron job lockfile</td>
     <td><tt>/tmp/rdiff-backup.lock</tt></td>

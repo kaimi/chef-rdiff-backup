@@ -4,7 +4,7 @@
 # DO NOT EDIT - manual edits WILL be lost
 #
 
-lockfile -r 0 <%= node['rdiff-backup']['lockfile'] =>
+lockfile -r 0 <%= node['rdiff-backup']['cron_lockfile'] =>
 
 <% @clients.each do |c| 
 if c['dirs'] != nil then %>
@@ -22,4 +22,4 @@ rdiff-backup --force --remove-older-than <%= node['rdiff-backup']['autotrim_time
 end
 end %>
 
-rm -f <%= node['rdiff-backup']['lockfile'] =>
+rm -f <%= node['rdiff-backup']['cron_lockfile'] =>
