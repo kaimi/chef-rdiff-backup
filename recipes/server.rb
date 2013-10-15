@@ -16,6 +16,10 @@ directory d do
   user u
   group u
 end
+directory "#{d}/ondemand" do
+  user u
+  group u
+end
 
 cookbook_file "#{d}/.ssh/id_rsa" do
   source k
@@ -36,6 +40,19 @@ end
 
 clients.each do |c|
   ssh_known_hosts_entry c['fqdn']
+
+  # create ondemand backup script
+  if c['dirs'] != nil then
+    template "#{d}/ondemand/#{c['fqdn']}.sh" do
+      source "ondemand.sh.erb"
+      user u
+      group u
+      mode 0750
+      variables ({
+	:c => c
+      })
+    end
+  end
 end
 
 template "#{d}/backup.sh" do
@@ -48,11 +65,17 @@ template "#{d}/backup.sh" do
   })
 end
 
-cron "backup" do
-  hour "23"
-  if node['rdiff-backup']['notification_email'] then
-    mailto node['rdiff-backup']['notification_email']
+if node['rdiff-backup']['cron']['enable'] then
+  cron "backup" do
+    day node['rdiff-backup']['cron']['day']
+    hour node['rdiff-backup']['cron']['hour']
+    minute node['rdiff-backup']['cron']['minute']
+    month node['rdiff-backup']['cron']['month']
+    weekday node['rdiff-backup']['cron']['weekday']
+    if node['rdiff-backup']['cron']['email'] then
+      mailto node['rdiff-backup']['cron']['email']
+    end
+    user "rdiff-backup"
+    command ": Backup Summary; /etc/rdiff-backup/backup.sh 2>&1"
   end
-  user "rdiff-backup"
-  command "ps a | grep backup.sh | grep -v grep || /etc/rdiff-backup/backup.sh 2>&1"
 end
