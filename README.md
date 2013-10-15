@@ -55,31 +55,31 @@ Attributes
     <td><tt>id_rsa</tt></td>
   </tr>
   <tr>
-    <td><tt>['rdiff-backup']['cron_enable']</tt></td>
+    <td><tt>['rdiff-backup']['cron']['enable']</tt></td>
     <td>Boolean</td>
     <td>whether to setup a cron job for automated backups</td>
     <td><tt>true</tt></td>
   </tr>
   <tr>
-    <td><tt>['rdiff-backup']['cron_email']</tt></td>
+    <td><tt>['rdiff-backup']['cron']['email']</tt></td>
     <td>String</td>
     <td>where to send summary emails</td>
     <td><tt>nil</tt></td>
   </tr>
   <tr>
-    <td><tt>['rdiff-backup']['cron_lockfile']</tt></td>
+    <td><tt>['rdiff-backup']['cron']['lockfile']</tt></td>
     <td>String</td>
     <td>where to write the cron job lockfile</td>
     <td><tt>/tmp/rdiff-backup.lock</tt></td>
   </tr>
   <tr>
-    <td><tt>['rdiff-backup']['autotrim_enable']</tt></td>
+    <td><tt>['rdiff-backup']['autotrim']['enable']</tt></td>
     <td>Boolean</td>
     <td>whether to auto trim backups</td>
     <td><tt>true</tt></td>
   </tr>
   <tr>
-    <td><tt>['rdiff-backup']['autotrim_timespan']</tt></td>
+    <td><tt>['rdiff-backup']['autotrim']['timespan']</tt></td>
     <td>String</td>
     <td>backup retention timespan (in rdiff-backup format)</td>
     <td><tt>1y</tt></td>

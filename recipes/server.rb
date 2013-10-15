@@ -48,12 +48,12 @@ template "#{d}/backup.sh" do
   })
 end
 
-if node['rdiff-backup']['cron_enable'] then
+if node['rdiff-backup']['cron']['enable'] then
   cron "backup" do
     hour "23"
     minute "0"
-    if node['rdiff-backup']['cron_email'] then
-      mailto node['rdiff-backup']['cron_email']
+    if node['rdiff-backup']['cron']['email'] then
+      mailto node['rdiff-backup']['cron']['email']
     end
     user "rdiff-backup"
     command ": Backup Summary; /etc/rdiff-backup/backup.sh 2>&1"
