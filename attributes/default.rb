@@ -11,13 +11,13 @@ default['rdiff-backup']['user'] = "rdiff-backup"
 default['rdiff-backup']['key'] = "id_rsa"
 
 default['rdiff-backup']['cron']['enable'] = true
-default['rdiff-backup']['cron']['email'] = "it@piratenfraktion-nrw.de"
+default['rdiff-backup']['cron']['email'] = nil
 default['rdiff-backup']['cron']['lockfile'] = "/tmp/rdiff-backup.lock"
 default['rdiff-backup']['cron']['day'] = "*"
-default['rdiff-backup']['cron']['hour'] = "23"
-default['rdiff-backup']['cron']['minute'] = "0"
+default['rdiff-backup']['cron']['hour'] = "*"
+default['rdiff-backup']['cron']['minute'] = "*"
 default['rdiff-backup']['cron']['month'] = "*"
 default['rdiff-backup']['cron']['weekday'] = "*"
 
-default['rdiff-backup']['autotrim']['enable'] = false
+default['rdiff-backup']['autotrim']['enable'] = true
 default['rdiff-backup']['autotrim']['timespan'] = "1y"
