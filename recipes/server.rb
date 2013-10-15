@@ -16,6 +16,10 @@ directory d do
   user u
   group u
 end
+directory "#{d}/ondemand" do
+  user u
+  group u
+end
 
 cookbook_file "#{d}/.ssh/id_rsa" do
   source k
@@ -36,6 +40,19 @@ end
 
 clients.each do |c|
   ssh_known_hosts_entry c['fqdn']
+
+  # create ondemand backup script
+  if c['dirs'] != nil then
+    template "#{d}/ondemand/#{c['fqdn']}.sh" do
+      source "ondemand.sh.erb"
+      user u
+      group u
+      mode 0750
+      variables ({
+	:c => c
+      })
+    end
+  end
 end
 
 template "#{d}/backup.sh" do

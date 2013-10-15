@@ -128,14 +128,25 @@ Usage
 -----
 
 ### recipes
+
 #### rdiff-backup::default
+
 Used in the other recipes. Do not call directly.
+
 #### rdiff-backup::client
+
 Sets up the client (= host to be backed up) side.
+
 #### rdiff-backup::server
+
 Sets up the server (= host to save backups to) side.
 
+This will do things: if enabled, a cron job is created that backs up all 
+configured rdiff-backup clients, and scripts to run on demand backups of each 
+single client.
+
 ###definitions
+
 #### backup\_path
 `backup_path "/var/lib/mailman"`
 
