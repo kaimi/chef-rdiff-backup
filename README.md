@@ -73,6 +73,36 @@ Attributes
     <td><tt>/tmp/rdiff-backup.lock</tt></td>
   </tr>
   <tr>
+    <td><tt>['rdiff-backup']['cron']['day']</tt></td>
+    <td>String</td>
+    <td>`day` component of the cron job definition</td>
+    <td><tt>*</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['rdiff-backup']['cron']['hour']</tt></td>
+    <td>String</td>
+    <td>`hour` component of the cron job definition</td>
+    <td><tt>*</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['rdiff-backup']['cron']['minute']</tt></td>
+    <td>String</td>
+    <td>`minute` component of the cron job definition</td>
+    <td><tt>*</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['rdiff-backup']['cron']['month']</tt></td>
+    <td>String</td>
+    <td>`month` component of the cron job definition</td>
+    <td><tt>*</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['rdiff-backup']['cron']['weekday']</tt></td>
+    <td>String</td>
+    <td>`weekday` component of the cron job definition</td>
+    <td><tt>*</tt></td>
+  </tr>
+  <tr>
     <td><tt>['rdiff-backup']['autotrim']['enable']</tt></td>
     <td>Boolean</td>
     <td>whether to auto trim backups</td>

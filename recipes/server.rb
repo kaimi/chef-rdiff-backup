@@ -50,8 +50,11 @@ end
 
 if node['rdiff-backup']['cron']['enable'] then
   cron "backup" do
-    hour "23"
-    minute "0"
+    day node['rdiff-backup']['cron']['day']
+    hour node['rdiff-backup']['cron']['hour']
+    minute node['rdiff-backup']['cron']['minute']
+    month node['rdiff-backup']['cron']['month']
+    weekday node['rdiff-backup']['cron']['weekday']
     if node['rdiff-backup']['cron']['email'] then
       mailto node['rdiff-backup']['cron']['email']
     end
