@@ -21,6 +21,11 @@ directory "#{d}/ondemand" do
   group u
 end
 
+directory node['rdiff-backup']['backup_dir'] do
+  user u
+  group u
+end
+
 cookbook_file "#{d}/.ssh/id_rsa" do
   source k
   user u
