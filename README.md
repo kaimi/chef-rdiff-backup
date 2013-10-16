@@ -141,7 +141,7 @@ Sets up the client (= host to be backed up) side.
 
 Sets up the server (= host to save backups to) side.
 
-This will do things: if enabled, a cron job is created that backs up all 
+This will do two things: if enabled, a cron job is created that backs up all 
 configured rdiff-backup clients, and scripts to run on demand backups of each 
 single client.
 
