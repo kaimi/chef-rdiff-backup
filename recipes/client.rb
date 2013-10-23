@@ -40,3 +40,4 @@ end
 backup_path d
 # include chef config in backup
 backup_path "/etc/chef"
+backup_path "/var/chef/backup"
