@@ -20,4 +20,4 @@ default['rdiff-backup']['cron']['month'] = "*"
 default['rdiff-backup']['cron']['weekday'] = "*"
 
 default['rdiff-backup']['autotrim']['enable'] = true
-default['rdiff-backup']['autotrim']['timespan'] = "1y"
+default['rdiff-backup']['autotrim']['timespan'] = "1Y"
